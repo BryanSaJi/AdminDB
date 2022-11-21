@@ -49,7 +49,7 @@ CREATE INDEX PK_IDCARRITO
 
 
 --**********************************************************
--- ELIMINACION DE TABLESPACES Y DATAFILES
+-- ELIMINACION DE TABLE
 
 
 /*DDROP TABLE TB_CARRITO;/*

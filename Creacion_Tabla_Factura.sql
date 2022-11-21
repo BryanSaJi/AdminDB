@@ -55,7 +55,7 @@ CREATE INDEX PK_IDFACTURA
 
 
 --**********************************************************
--- ELIMINACION DE TABLESPACES Y DATAFILES
+-- ELIMINACION DE TABLE
 
 
 /*DDROP TABLE TB_FACTURA;/*
