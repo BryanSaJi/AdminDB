@@ -53,8 +53,8 @@ CREATE INDEX PK_IDENVIO
 -- ELIMINACION DE TABLESPACES Y DATAFILES
 
 
-/*DDROP TABLE TB_FACTURA;/*
-/*DROP INDEX PK_IDFACTURA;*/
+/*DDROP TABLE TB_ENVIO;/*
+/*DROP INDEX PK_IDENVIO;*/
 
 
 --**********************************************************
