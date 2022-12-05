@@ -57,6 +57,30 @@ CREATE INDEX PK_IDENVIO
 
 
 --**********************************************************
+-- CREACION VISTA MATERIALIZADA
+
+
+-- drop MATERIALIZED VIEW financiamiento_VWM01  
+
+
+CREATE MATERIALIZED VIEW LOG ON TB_ENVIO
+  WITH PRIMARY KEY INCLUDING NEW VALUES;
+  
+  
+CREATE MATERIALIZED VIEW TB_ENVIO_VWM01
+       TABLESPACE TBS_FACTURACION_DATA
+       BUILD IMMEDIATE
+       REFRESH START WITH TO_CHAR(to_date('10-DEC-2022 3:00 AM','DD-MON-YYYY HH:MI AM'),'DD-MON-YYYY HH:MI AM') NEXT TO_CHAR(to_date ('10-DEC-2022 3:00 AM','DD-MON-YYYY HH:MI AM'),'DD-MON-YYYY HH:MI AM') + 1 AS
+          select IDENVIO,
+                 IDDETALLEVENTA,
+                 IDCLIENTE,
+                 ESTADOENVIO,
+                 FECHA
+            from TB_ENVIO;
+
+
+
+--**********************************************************
 -- ELIMINACION DE TABLE
 
 
@@ -67,3 +91,4 @@ CREATE INDEX PK_IDENVIO
 --**********************************************************
 -- FIN
 --**********************************************************
+

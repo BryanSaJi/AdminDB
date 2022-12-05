@@ -51,6 +51,32 @@ CREATE INDEX PK_IDDETALLEVENTA
     TABLESPACE TBS_FACTURACION_IDX;
 
 
+
+--**********************************************************
+-- CREACION VISTA MATERIALIZADA
+
+
+-- drop MATERIALIZED VIEW financiamiento_VWM01  
+
+
+CREATE MATERIALIZED VIEW LOG ON TB_DETALLEVENTA
+  WITH PRIMARY KEY INCLUDING NEW VALUES;
+  
+  
+CREATE MATERIALIZED VIEW TB_DETALLEVENTA_VWM01
+       TABLESPACE TBS_FACTURACION_DATA
+       BUILD IMMEDIATE
+       REFRESH START WITH TO_CHAR(to_date('10-DEC-2022 3:00 AM','DD-MON-YYYY HH:MI AM'),'DD-MON-YYYY HH:MI AM') NEXT TO_CHAR(to_date ('10-DEC-2022 3:00 AM','DD-MON-YYYY HH:MI AM'),'DD-MON-YYYY HH:MI AM') + 1 AS
+          select IDFACTURA,
+                 FECHAFACTURA,
+                 SUBTOTAL,
+                 IVA,
+                 TOTALFACTURA,
+                 IDFORMAPAGO
+            from TB_DETALLEVENTA;
+
+
+
 --**********************************************************
 -- ELIMINACION DE TABLE 
 
